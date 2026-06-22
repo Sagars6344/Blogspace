@@ -7,7 +7,6 @@ import '../styles/login.css';
 
 function Profile() {
   const navigate = useNavigate();
-  const [subscribed, setSubscribed] = useState(false);
   const [activeTab, setActiveTab] = useState('posts');
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
