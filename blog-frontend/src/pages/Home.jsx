@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/home.css';
 
+const API = 'https://airy-contentment-production-06c4.up.railway.app';
 const categories = ["All", "Technology", "Programming", "AI", "Career", "Design"];
 
 function Home() {
@@ -11,7 +12,7 @@ function Home() {
   const [activeTab, setActiveTab] = useState("All");
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/posts/')
+    axios.get(`${API}/api/posts/`)
       .then(response => {
         setPosts(response.data);
         setLoading(false);
@@ -86,7 +87,7 @@ function Home() {
                     <div
                       className="author-avatar"
                       style={post.author_avatar ? {
-                        backgroundImage: `url(http://127.0.0.1:8000${post.author_avatar})`,
+                        backgroundImage: `url(${API}${post.author_avatar})`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center'
                       } : {}}
