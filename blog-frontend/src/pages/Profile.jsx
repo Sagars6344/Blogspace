@@ -5,6 +5,8 @@ import '../styles/profile.css';
 import '../styles/home.css';
 import '../styles/login.css';
 
+const API = 'https://airy-contentment-production-06c4.up.railway.app';
+
 function Profile() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('posts');
@@ -40,7 +42,7 @@ function Profile() {
       return;
     }
 
-    axios.get('http://127.0.0.1:8000/api/my-profile/', {
+    axios.get('https://airy-contentment-production-06c4.up.railway.app/api/my-profile/', {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(response => {
@@ -66,7 +68,7 @@ function Profile() {
     const formData = new FormData();
     formData.append(type, file);
 
-    axios.post('http://127.0.0.1:8000/api/update-profile-images/', formData, {
+    axios.post('https://airy-contentment-production-06c4.up.railway.app/api/update-profile-images/', formData, {
       headers: {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'multipart/form-data'
@@ -124,7 +126,7 @@ function Profile() {
     setSavingProfile(true);
 
     const doTextUpdate = () => {
-      return axios.post('http://127.0.0.1:8000/api/update-profile/', {
+      return axios.post('https://airy-contentment-production-06c4.up.railway.app/api/update-profile/', {
         username: editUsername,
         email: editEmail,
         phone: editPhone,
@@ -140,7 +142,7 @@ function Profile() {
       const formData = new FormData();
       if (modalAvatarFile) formData.append('avatar_image', modalAvatarFile);
       if (modalCoverFile) formData.append('cover_image', modalCoverFile);
-      return axios.post('http://127.0.0.1:8000/api/update-profile-images/', formData, {
+      return axios.post('https://airy-contentment-production-06c4.up.railway.app/api/update-profile-images/', formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data'
@@ -181,7 +183,7 @@ function Profile() {
           cursor: 'pointer',
           position: 'relative',
           ...(profile.cover_image ? {
-            backgroundImage: `url(http://127.0.0.1:8000${profile.cover_image})`,
+            backgroundImage: `url(https://airy-contentment-production-06c4.up.railway.app${profile.cover_image})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center'
           } : {})
@@ -213,7 +215,7 @@ function Profile() {
               cursor: 'pointer',
               position: 'relative',
               ...(profile.avatar_image ? {
-                backgroundImage: `url(http://127.0.0.1:8000${profile.avatar_image})`,
+                backgroundImage: `url(https://airy-contentment-production-06c4.up.railway.app${profile.avatar_image})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'
               } : {})
@@ -295,7 +297,7 @@ function Profile() {
                     <div
                       className="post-card-image"
                       style={post.cover_image ? {
-                        backgroundImage: `url(http://127.0.0.1:8000${post.cover_image})`,
+                        backgroundImage: `url(https://airy-contentment-production-06c4.up.railway.app${post.cover_image})`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center'
                       } : {}}
@@ -345,7 +347,7 @@ function Profile() {
                   style={modalAvatarPreview ? {
                     backgroundImage: `url(${modalAvatarPreview})`
                   } : profile.avatar_image ? {
-                    backgroundImage: `url(http://127.0.0.1:8000${profile.avatar_image})`
+                    backgroundImage: `url(https://airy-contentment-production-06c4.up.railway.app${profile.avatar_image})`
                   } : {}}
                 >
                   {!modalAvatarPreview && !profile.avatar_image && profile.username[0].toUpperCase()}
@@ -366,7 +368,7 @@ function Profile() {
                   style={modalCoverPreview ? {
                     backgroundImage: `url(${modalCoverPreview})`, color: 'transparent'
                   } : profile.cover_image ? {
-                    backgroundImage: `url(http://127.0.0.1:8000${profile.cover_image})`, color: 'transparent'
+                    backgroundImage: `url(https://airy-contentment-production-06c4.up.railway.app${profile.cover_image})`, color: 'transparent'
                   } : {}}
                 >
                   {!modalCoverPreview && !profile.cover_image && 'Click to upload'}
